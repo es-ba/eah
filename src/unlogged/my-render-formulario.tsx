@@ -16,7 +16,8 @@ import { FormStructureState } from "row-validator";
 
 setCalcularVariablesEspecificasOperativo((respuestasRaiz:RespuestasRaiz, forPk:ForPk)=>{
     //ajustar variables
-    if(forPk.formulario == 'F:RE' as IdFormulario){
+    
+    /*if(forPk.formulario == 'F:RE' as IdFormulario){
         let respuestasHogares = respuestasRaiz['hogares'];
         let cantHogares =respuestasHogares instanceof Array? respuestasHogares.length:0;
         if (respuestasRaiz['contacto' as IdVariable]==2 && cantHogares == 0 ){
@@ -25,8 +26,9 @@ setCalcularVariablesEspecificasOperativo((respuestasRaiz:RespuestasRaiz, forPk:F
             }
             respuestasRaiz['hogares' as IdUnidadAnalisis][0]={} as Respuestas;  
         }
-    }
-    if(forPk.formulario == 'F:S1_SUP' as IdFormulario){
+    }*/
+
+    /*if(forPk.formulario == 'F:S1_SUP' as IdFormulario){
         let hogar = forPk.hogar as number - 1;
         if(respuestasRaiz.hogares && respuestasRaiz.hogares[hogar]){
             let respuestasHogarSup = respuestasRaiz.hogares_sup[hogar];
@@ -41,18 +43,30 @@ setCalcularVariablesEspecificasOperativo((respuestasRaiz:RespuestasRaiz, forPk:F
                     :null;
             }
         }
-    }
+    }*/
     if(forPk.formulario == 'F:I1' as IdFormulario){
         let {respuestas} = respuestasForPk(forPk);
-        respuestas['msi' as IdVariable] = respuestas['$p0' as IdVariable];
-        respuestas['msnombrei' as IdVariable] = respuestas['nombre' as IdVariable];
-        respuestas['msedadi'as IdVariable] = respuestas['edad' as IdVariable];
+        respuestas['edadcalculada' as IdVariable] = respuestas['edad' as IdVariable];
+        respuestas['nombrecalculado' as IdVariable] = respuestas['nombre' as IdVariable];
+        respuestas['sexocalculado' as IdVariable] = respuestas['sexo' as IdVariable];
     }
     if(forPk.formulario == 'F:S1' as IdFormulario){
         let {respuestas} = respuestasForPk(forPk);
         let respondente = (respuestas.personas instanceof Array && respuestas.personas.length)?respuestas.personas[0]:null;
         respuestas['nombrer' as IdVariable] = respondente?respondente['nombre' as IdVariable]:null;
         respuestas['respond' as IdVariable] = respuestas['nombrer' as IdVariable]?1:null;
+        if(respuestas.personas instanceof Array){
+            respuestas['total_r' as IdVariable] = respuestas.personas.filter((per:Respuestas)=>per['r0' as IdVariable]==1).length
+        }
+    }
+    
+    if(forPk.formulario == 'F:S1_P' as IdFormulario){
+        let {respuestas} = respuestasForPk(forPk);
+        //{"autoing":"R2=1 or R3=1 or R4=3 or R7= 2 => 1"}
+        respuestas['r0' as IdVariable] = (
+                respuestas['r2' as IdVariable] == 1 || respuestas['r3' as IdVariable] == 1 ||
+                respuestas['r4' as IdVariable] == 3 || respuestas['r7' as IdVariable] == 2
+            )?1:2
     }
 })
 
