@@ -4,7 +4,7 @@ server:
   base-url: /eah
   session-store: memory
 db:
-  user: ut_admin
+  user: eah_admin
   motor: postgresql
   host: localhost
   database: eah_db
@@ -15,7 +15,7 @@ db:
 install:
   dump:
     db:
-      owner: ut_owner
+      owner: eah_owner
       apply-generic-user-replaces: true
     admin-can-create-tables: true
     enances: inline
@@ -86,7 +86,7 @@ login:
     lockedFail: el usuario se encuentra bloqueado
     inactiveFail: es usuario está marcado como inactivo
 client-setup:
-  title: eah
+  title: pcEah
   cursors: true
   lang: es
   menu: true

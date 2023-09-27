@@ -20,8 +20,8 @@ import { personas_sup        } from './table-personas_sup';
 const APP_DM_VERSION="#23-09-22";
 
 export type Constructor<T> = new(...args: any[]) => T;
-export function emergeAppUt<T extends Constructor<dmencu.AppAppDmEncuType>>(Base:T){
-  return class AppUt extends Base{
+export function emergeAppEah<T extends Constructor<dmencu.AppAppDmEncuType>>(Base:T){
+  return class AppEah extends Base{
     constructor(...args:any[]){ 
         super(args);
     }
@@ -41,14 +41,6 @@ export function emergeAppUt<T extends Constructor<dmencu.AppAppDmEncuType>>(Base
         super.addSchrödingerServices(mainApp, baseUrl);
         //permito levantar mis imagenes en aplicaciones dependientes
         //be.app.use('/img', express.static('node_modules/dmencu/dist/unlogged/unlogged/img'))
-        mainApp.get(baseUrl+'/grilla_ut',async function(req,res,_next){
-            // @ts-ignore sé que voy a recibir useragent por los middlewares de Backend-plus
-            var {useragent} = req;
-            //var htmlMain=be.mainPage({useragent}, false, {skipMenu:true, offlineFile:true}).toHtmlDoc();
-            //armar reg
-            //miniTools.serveText(grilla_ut,'html')(req,res);
-            miniTools.serveFile('dist/unlogged/grilla-eah/grilla-eah.html',{})(req,res);
-        });
     }
     clientIncludes(req:Request, hideBEPlusInclusions:OptsClientPage){
         return super.clientIncludes(req, hideBEPlusInclusions).concat([

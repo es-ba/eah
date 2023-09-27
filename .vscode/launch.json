@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "preLaunchTask": "build-all",
-            "program": "${workspaceFolder}/dist/server/server-ut.js",
+            "program": "${workspaceFolder}/dist/server/server-eah.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
@@ -19,7 +19,7 @@
             "request": "launch",
             "name": "back office Fast Launch",
             "env": {"BACKEND_PLUS_LOCAL_CONFIG":"local-config.yaml"},
-            "program": "${workspaceFolder}/dist/server/server-ut.js",
+            "program": "${workspaceFolder}/dist/server/server-eah.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
@@ -29,7 +29,7 @@
             "request": "launch",
             "name": "DM Fast Launch",
             "env": {"BACKEND_PLUS_LOCAL_CONFIG":"local-config-dm.yaml"},
-            "program": "${workspaceFolder}/dist/server/server-ut.js",
+            "program": "${workspaceFolder}/dist/server/server-eah.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
@@ -39,7 +39,7 @@
             "request": "launch",
             "name": "dumpDb",
             "preLaunchTask": "build-all",
-            "program": "${workspaceFolder}/dist/server/server-ut.js",
+            "program": "${workspaceFolder}/dist/server/server-eah.js",
             "args": [
                 "--dump-db"
             ],
@@ -51,7 +51,7 @@
             "type": "node",
             "request": "launch",
             "name": "Fast dumpDb",
-            "program": "${workspaceFolder}/dist/server/server-ut.js",
+            "program": "${workspaceFolder}/dist/server/server-eah.js",
             "args": [
                 "--dump-db"
             ],
