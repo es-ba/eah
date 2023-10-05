@@ -77,7 +77,7 @@ export function emergeAppEah<T extends Constructor<dmencu.AppAppDmEncuType>>(Bas
   
     override getMenuControles(context:Context){
        var menuControles =super.getMenuControles(context);
-       menuControles.push( {menuType:'table', name:'control por dias de carga', table: 'control_dias_carga'});
+       //menuControles.push( {menuType:'table', name:'control por dias de carga', table: 'control_dias_carga'}); //aqui van controles especificos de cada operativo 
        //console.log('longitud ',menuControles.length)
        return menuControles
     }
