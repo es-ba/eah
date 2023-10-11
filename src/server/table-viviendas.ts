@@ -34,11 +34,6 @@ export function viviendas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "f_realiz_o",
-            "typeName": "date",
-            "nullable": true
-        },
-        {
             "name": "confir_tel",
             "typeName": "bigint",
             "nullable": true

@@ -18,7 +18,6 @@ create table "viviendas" (
   "s1a1_obs" text, 
   "total_vis" bigint, 
   "entreav" bigint, 
-  "f_realiz_o" date, 
   "confir_tel" bigint, 
   "contacto" bigint, 
   "confirma_dom" bigint, 
