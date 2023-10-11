@@ -32,9 +32,9 @@ var esRealizada = (respuestas:Respuestas)=>{
     //determinar  fin_1, fin_2 se tienen en cuenta 
     var esRea = false;
     var codRea:number|null= null;
-    if(!respuestas['identif' as IdVariable]){
+    if(!respuestas['confir_tel' as IdVariable]){
         return {codRea, esRea}
-    }else if(respuestas['identif' as IdVariable]==2 || respuestas['habita' as IdVariable]==2 ||respuestas['resid_hog' as IdVariable]==2||respuestas['contacto' as IdVariable]==2){
+    }else if(respuestas['confir_tel' as IdVariable]==2 || respuestas['confirma_dom' as IdVariable]==2 ||respuestas['contacto' as IdVariable]==2){
         codRea = 2;
         esRea = false;
     }else{
@@ -44,11 +44,41 @@ var esRealizada = (respuestas:Respuestas)=>{
             for(let respuestasH of respuestasHs){
                 var reah:number;
                 var selec:number;
-                if(respuestasH['entrea' ] != 1||respuestasH['tp']==0){
+                if(respuestasH['entrea'] != 1){
                     reah=2;
                 }else{
+                /* para nueva reas con mas de un individual */
+                    var reaps: number[]=[] ;
+                    var respuestasPs=respuestasH['personas']
+                    if(respuestasPs){
+                        for (let respuestasP of respuestasPs){ 
+                            var reap=0;
+                            if (respuestasP['t0']==1){
+                               reap=1;
+                            }else if(respuestasP['t0']==2){
+                              reap=2;
+                            }else{ 
+                              reap=3
+                            }
+                            reaps.push(reap);    
+                        }
+                        if (reaps.some(rp=>rp==1)){
+                          reah=1;
+                        }else if(reaps.every(rp=>rp==2)){
+                          reah=2;
+                        }else if(reahs.every(rp=>rp==1||rp==3)){
+                           reah=3
+                        }else{
+                           reah=4
+                        }    
+                    }else{
+                       reah=3
+                    }
+  
+                   /* anterior de UT
                     selec=respuestasH['cr_num_miembro']
                     if(respuestasH['personas'] && respuestasH.personas[selec-1] ){
+                        
                         var respuestasP = respuestasH.personas[selec-1];
                         var resp_entrea_ind = respuestasP['entreaind' as IdVariable ];
                         //var resp_resulcita_ind = respuestasP['resulcita' as IdVariable ];
@@ -74,7 +104,9 @@ var esRealizada = (respuestas:Respuestas)=>{
                     }else{ // ver este caso 
                         reah=3;
                     } 
+                */   
                 } 
+              
                 reahs.push(reah);
             } //for
             if (reahs.every(rh=>rh==1)){

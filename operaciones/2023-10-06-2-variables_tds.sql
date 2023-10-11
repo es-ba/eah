@@ -1,17 +1,17 @@
 set search_path=base;
 
 -- reemplazar adecuadamente owner y, admin segun entorno
-set role ut_owner;
+set role eahpc2023_owner;
 --set role  TEST_owner;
 --set role CAPA_owner;
 
 --sql2tabla_datos($esquema,$tabla,$operativo)
 --   para cargar tabla_datos y variables
-select sql2tabla_datos('base', 'tem', 'UT_2023');
+select sql2tabla_datos('base', 'tem', 'PRC_EAH2023');
 
 select sql2tabla_datos('base', unidad_analisis, operativo)
 from unidad_analisis u join parametros p using (operativo)
-where unico_registro and u.operativo=p.operativo
+where unico_registro and u.operativo=p.operativo and unidad_analisis!~'_sup$'
 order by orden;
 
 -- copiado de /meta_enc/install/complete_variables.sql

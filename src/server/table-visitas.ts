@@ -21,7 +21,12 @@ export function visitas(context:TableContext):TableDefinition {
             "name": "visita",
             "typeName": "bigint",
             "nullable": false
-        },         
+        },
+        {
+            "name": "anoenc",
+            "typeName": "bigint",
+            "nullable": true
+        },
         {
             "name": "rol",
             "typeName": "text",

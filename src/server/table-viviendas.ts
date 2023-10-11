@@ -1,4 +1,5 @@
 "use strict";
+                
 import {TableDefinition, TableContext} from "./types-eah";
 export function viviendas(context:TableContext):TableDefinition {
     var esEditable=context.user.rol==='admin';
@@ -18,12 +19,7 @@ export function viviendas(context:TableContext):TableDefinition {
             "nullable": false
         },
         {
-            "name": "vdominio",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "obs_re",
+            "name": "s1a1_obs",
             "typeName": "text",
             "nullable": true
         },
@@ -33,82 +29,27 @@ export function viviendas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "soporte",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
             "name": "entreav",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "identif",
-            "typeName": "bigint",
+            "name": "f_realiz_o",
+            "typeName": "date",
             "nullable": true
         },
         {
-            "name": "habita",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "construc",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon_viv",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_6",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon3",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "resid_hog",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon_hog",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_3",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_5",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon_9v",
+            "name": "confir_tel",
             "typeName": "bigint",
             "nullable": true
         },
         {
             "name": "contacto",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "confirma_dom",
             "typeName": "bigint",
             "nullable": true
         },
@@ -123,111 +64,52 @@ export function viviendas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "s1a1_obs_sup",
+            "name": "razonv",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_4",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_5",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon2_6",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "razon3",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "datos_personal_sup",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "total_vis_sup",
+            "name": "vdominio",
             "typeName": "bigint",
             "nullable": true
-        },
-        {
-            "name": "soporte_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "modo_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "confir_tel_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "domicilio_sup",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "confir_dom_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "identifico",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sp1_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sp2_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_1_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_2_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_3_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_4_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_5_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_6_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon3_sup",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "razon_9_1_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sp3_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "total_h_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
+        },        
         { name: "consistido"    , label:'consistido'            , typeName: 'timestamp'},
+
     ],
     "sql": {
         "isReferable": true,
@@ -254,6 +136,7 @@ export function viviendas(context:TableContext):TableDefinition {
             ],
             "abr": "h"
         },
+/*        
         {
             "table": "visitas_sup",
             "fields": [
@@ -270,6 +153,7 @@ export function viviendas(context:TableContext):TableDefinition {
             ],
             "abr": "hsup"
         }
+*/        
     ]
 };
 }
