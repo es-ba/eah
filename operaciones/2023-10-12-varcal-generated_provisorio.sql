@@ -35,7 +35,14 @@ create table "prc_eah2023_personas_calculada" (
   "operativo" text, 
   "vivienda" text, 
   "hogar" bigint, 
-  "persona" bigint
+  "persona" bigint,
+  "t_desoc" bigint, 
+  "t_ina" bigint, 
+  "t_ocup" bigint, 
+  "cond_activ" bigint, 
+  "t_categ" bigint, 
+  "categori" bigint, 
+  "ocup_cd_oit" bigint
 , primary key ("operativo", "vivienda", "hogar", "persona")
 );
 grant select, insert, update, references on "prc_eah2023_personas_calculada" to eahpc2023_admin;
@@ -169,6 +176,39 @@ BEGIN
         WHERE "viviendas"."operativo"="prc_eah2023_viviendas_calculada"."operativo" 
             AND "viviendas"."vivienda"="prc_eah2023_viviendas_calculada"."vivienda" 
             AND "viviendas"."operativo"=p_operativo AND "viviendas"."vivienda"=p_id_caso;
+
+        UPDATE prc_eah2023_personas_calculada
+          SET 
+              t_desoc = case when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) >= 2 and null2zero(personas.t3) <= 4 and null2zero(personas.t9) = 1 and null2zero(personas.t12) = 1 then 1 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) >= 2 and null2zero(personas.t3) <= 4 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 1 and null2zero(personas.t12) = 1 then 2 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) >= 2 and null2zero(personas.t3) <= 4 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 2 and (null2zero(personas.t11) >= 1 or null2zero(personas.t11) <= 2) and null2zero(personas.t12) = 1 then 3 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 4 and (null2zero(personas.t5) = 2 or null2zero(personas.t5) = 3) and null2zero(personas.t9) = 1 and null2zero(personas.t12) = 1 then 4 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 4 and (null2zero(personas.t5) = 2 or null2zero(personas.t5) = 3) and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 1 and null2zero(personas.t12) = 1 then 5 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 4 and (null2zero(personas.t5) = 2 or null2zero(personas.t5) = 3) and null2zero(personas.t10) = 2 and (null2zero(personas.t11) = 1 or null2zero(personas.t11) = 2) and null2zero(personas.t12) = 1 then 6 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 5 and (null2zero(personas.t6) = 2 or null2zero(personas.t6) = 3) and null2zero(personas.t9) = 1 and null2zero(personas.t12) = 1 then 7 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 5 and (null2zero(personas.t6) = 2 or null2zero(personas.t6) = 3) and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 1 and null2zero(personas.t12) = 1 then 8 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 5 and (null2zero(personas.t6) = 2 or null2zero(personas.t6) = 3) and null2zero(personas.t10) = 2 and (null2zero(personas.t11) = 1 or null2zero(personas.t11) = 2) and null2zero(personas.t12) = 1 then 9 when null2zero(personas.t1) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 1 and null2zero(personas.t12) = 1 then 10 when null2zero(personas.t1) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 1 and null2zero(personas.t12) = 1 then 11 when null2zero(personas.t1) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 2 and (null2zero(personas.t11) = 1 or null2zero(personas.t11) = 2) and null2zero(personas.t12) = 1 then 12 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 1 and null2zero(personas.t12) = 1 then 13 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 1 and null2zero(personas.t12) = 1 then 14 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 1 and null2zero(personas.t7) = 2 and null2zero(personas.t8) = 3 and null2zero(personas.t9) = 2 and null2zero(personas.t10) = 2 and (null2zero(personas.t11) = 1 or null2zero(personas.t11) = 2) and null2zero(personas.t12) = 1 then 15 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and (null2zero(t3) = 2 or null2zero(personas.t3) = 3 or null2zero(personas.t3) = 4) and (null2zero(personas.t9) < 0 or null2zero(personas.t12) < 0 or null2zero(personas.t10) < 0 or null2zero(personas.t11) < 0) then - 9 else null end,
+              t_ina = case when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 1 then 1 when null2zero(personas.t11) = 3 then 2 when null2zero(personas.edad) <= 9 then 3 when null2zero(t12) = 2 then 4 else null end,
+              t_ocup = case when null2zero(personas.t1) = 1 and null2zero(personas.t7) = 1 then 1 when null2zero(personas.t1) = 1 and null2zero(personas.t7) = 2 and (null2zero(personas.t8) = 1 or null2zero(personas.t8) = 2) then 2 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 1 and null2zero(personas.t7) = 1 then 3 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 1 and null2zero(personas.t7) = 2 and (null2zero(personas.t8) = 1 or null2zero(personas.t8) = 2) then 4 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) >= 1 and null2zero(personas.t4) <= 3 then 5 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 4 and null2zero(personas.t5) = 1 then 6 when null2zero(personas.t1) = 2 and null2zero(personas.t2) = 2 and null2zero(personas.t3) = 5 and null2zero(personas.t4) = 5 and null2zero(personas.t6) = 1 then 7 when null2zero(personas.t1) < 0 or null2zero(personas.t2) < 0 or null2zero(personas.t3) < 0 or null2zero(personas.t4) < 0 or null2zero(personas.t5) < 0 or null2zero(personas.t6) < 0 or null2zero(personas.t8) < 0 then - 9 else null end
+          FROM "personas"  
+          WHERE "personas"."operativo"="prc_eah2023_personas_calculada"."operativo" AND "personas"."vivienda"="prc_eah2023_personas_calculada"."vivienda" AND "personas"."hogar"="prc_eah2023_personas_calculada"."hogar" AND "personas"."persona"="prc_eah2023_personas_calculada"."persona" 
+            AND "personas"."operativo"=p_operativo AND "personas"."vivienda"=p_id_caso;
+        UPDATE prc_eah2023_personas_calculada
+          SET 
+              cond_activ = case when null2zero(prc_eah2023_personas_calculada.t_ocup) >= 1 then 1 when null2zero(prc_eah2023_personas_calculada.t_desoc) >= 1 then 2 when null2zero(prc_eah2023_personas_calculada.t_ina) >= 1 then 3 else null end
+          FROM "personas" 
+          WHERE "personas"."operativo"="prc_eah2023_personas_calculada"."operativo" AND "personas"."vivienda"="prc_eah2023_personas_calculada"."vivienda" AND "personas"."hogar"="prc_eah2023_personas_calculada"."hogar" AND "personas"."persona"="prc_eah2023_personas_calculada"."persona" 
+            AND "personas"."operativo"=p_operativo AND "personas"."vivienda"=p_id_caso;
+        UPDATE prc_eah2023_personas_calculada
+          SET 
+              t_categ = case when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and null2zero(personas.t46) = 1 then 1 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and (null2zero(personas.t46) = 2 or null2zero(personas.t46) = 3) and (null2zero(personas.t47) = 2 or null2zero(personas.t47) = 1 and null2zero(personas.t48) = 2) then 2 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and (null2zero(personas.t44) = 3 or null2zero(personas.t44) = 2 and null2zero(personas.t45) = 1) then 3 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and (null2zero(personas.t46) = 2 or null2zero(personas.t46) = 3) and null2zero(personas.t47) = 1 and null2zero(personas.t48) = 1 then 4 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and null2zero(personas.t37sd) = 1 then 5 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and null2zero(personas.t44) = 2 and null2zero(personas.t45) = 3 then 6 when null2zero(prc_eah2023_personas_calculada.cond_activ) = 1 and (null2zero(personas.t44) = - 9 or null2zero(personas.t45) < 0 or null2zero(personas.t46) < 0 or null2zero(personas.t47) < 0 or null2zero(personas.t48) < 0) and not null2zero(personas.t46) = 1 then - 9 else null end
+          FROM "personas" 
+          WHERE "personas"."operativo"="prc_eah2023_personas_calculada"."operativo" AND "personas"."vivienda"="prc_eah2023_personas_calculada"."vivienda" AND "personas"."hogar"="prc_eah2023_personas_calculada"."hogar" AND "personas"."persona"="prc_eah2023_personas_calculada"."persona" 
+            AND "personas"."operativo"=p_operativo AND "personas"."vivienda"=p_id_caso;
+        UPDATE prc_eah2023_personas_calculada
+          SET 
+              categori = case when null2zero(prc_eah2023_personas_calculada.cond_activ) = 2 or null2zero(prc_eah2023_personas_calculada.cond_activ) = 3 then 0 when null2zero(prc_eah2023_personas_calculada.t_categ) = 1 then 1 when null2zero(prc_eah2023_personas_calculada.t_categ) = 2 then 2 when null2zero(prc_eah2023_personas_calculada.t_categ) >= 3 and null2zero(prc_eah2023_personas_calculada.t_categ) <= 5 then 3 when null2zero(prc_eah2023_personas_calculada.t_categ) = 6 then 4 when null2zero(prc_eah2023_personas_calculada.t_categ) < 0 then - 9 else null end
+          FROM "personas" 
+          WHERE "personas"."operativo"="prc_eah2023_personas_calculada"."operativo" AND "personas"."vivienda"="prc_eah2023_personas_calculada"."vivienda" AND "personas"."hogar"="prc_eah2023_personas_calculada"."hogar" AND "personas"."persona"="prc_eah2023_personas_calculada"."persona" 
+            AND "personas"."operativo"=p_operativo AND "personas"."vivienda"=p_id_caso;
+        UPDATE prc_eah2023_personas_calculada
+          SET 
+              ocup_cd_oit = case when null2zero(prc_eah2023_personas_calculada.categori) = 3 and null2zero(personas.t47) = 1 and null2zero(personas.t48) = 1 or (null2zero(prc_eah2023_personas_calculada.categori) = 1 or null2zero(prc_eah2023_personas_calculada.categori) = 2) and null2zero(personas.t47) = 1 and null2zero(personas.t48) = 2 then 1 else null end
+          FROM "personas" 
+          WHERE "personas"."operativo"="prc_eah2023_personas_calculada"."operativo" AND "personas"."vivienda"="prc_eah2023_personas_calculada"."vivienda" AND "personas"."hogar"="prc_eah2023_personas_calculada"."hogar" AND "personas"."persona"="prc_eah2023_personas_calculada"."persona" 
+            AND "personas"."operativo"=p_operativo AND "personas"."vivienda"=p_id_caso;
 
 
 ----
