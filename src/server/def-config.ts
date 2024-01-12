@@ -43,11 +43,12 @@ install:
       - ../node_modules/dmencu/install/control_disform_cerrado_trg.sql
       - ../node_modules/dmencu/install/control_cargado_tareas_tem_trg.sql
       - ../node_modules/dmencu/install/accion_cumple_condicion.sql
+      - ../node_modules/dmencu/install/tarea_cumple_condicion.sql
       - ../node_modules/dmencu/install/actualizar_estado_tem_trg.sql
       - ../node_modules/dmencu/install/carga_inicial_tareas_tem.sql
       - ../node_modules/dmencu/install/validar_tareas_tem_trg.sql
       - ../node_modules/dmencu/install/asignar_desasignar_tareas_tem_trg.sql
-      - ../node_modules/dmencu/install/determinar_tarea_proxima_trg.sql
+      - ../node_modules/dmencu/install/desverificar_tarea_trg.sql
       - ../node_modules/dmencu/install/inicial_update_varcal_por_encuesta.sql
       - desintegrarpk.sql
       - comun_otras_fun.sql
