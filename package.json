@@ -1,6 +1,6 @@
 {
   "name": "eah",
-  "description": "Encuesta de Uso del Tiempo CABA",
+  "description": "Prueba de cuestionarios de Encuesta Anual de Hogares CABA",
   "version": "0.1.5",
   "private": true,
   "author": "Codenautas <codenautas@googlegroups.com>",
@@ -11,7 +11,7 @@
     "dist"
   ],
   "dependencies": {
-    "dmencu": "^0.8.8"
+    "dmencu": "^0.8.10"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
