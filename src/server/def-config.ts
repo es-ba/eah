@@ -8,10 +8,6 @@ db:
   motor: postgresql
   host: localhost
   database: eah_db
-  schema: base
-  search_path: 
-  - base
-  - comun
 install:
   dump:
     db:
